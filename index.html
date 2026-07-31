@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#101522">
+    <title>Flappy Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game-container">
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas" width="960" height="540"></canvas>
+
+            <header class="game-hud" aria-label="Statystyki gry">
+                <div class="hud-card score-card">
+                    <span class="hud-label">Wynik</span>
+                    <strong id="scoreDisplay" class="hud-value">0</strong>
+                </div>
+
+                <div class="level-card" aria-live="polite">
+                    <span id="difficultyDisplay">Poziom 1</span>
+                    <span id="comboDisplay">Combo x0</span>
+                </div>
+                <div id="boosterStatus" class="booster-status hud-hidden" aria-hidden="true">
+                    <span class="booster-time"></span>
+                </div>
+
+                <div class="hud-card best-card">
+                    <span class="hud-label">Rekord</span>
+                    <strong id="bestScoreDisplay" class="hud-value">0</strong>
+                </div>
+            </header>
+
+
+            <aside class="power-dock" aria-label="Aktywne bonusy">
+                <div id="speedPowerCard" class="power-card speed-power">
+                    <span class="power-icon">⚡</span><span class="power-copy"><strong>Przyspieszenie</strong><small class="power-time"></small></span><i></i>
+                </div>
+                <div id="slowPowerCard" class="power-card slow-power">
+                    <span class="power-icon">❄️</span><span class="power-copy"><strong>Spowolnienie</strong><small class="power-time"></small></span><i></i>
+                </div>
+                <div id="shieldPowerCard" class="power-card shield-power">
+                    <span class="power-icon">🛡️</span><span class="power-copy"><strong>Tarcza</strong><small class="power-time"></small></span><i></i>
+                </div>
+            </aside>
+
+            <div id="eventBanner" class="event-banner"><strong>WYDARZENIE</strong><span></span></div>
+            <div class="fever-meter" aria-label="Pasek Fever"><span>🔥 FEVER</span><i><b id="feverFill"></b></i></div>
+            <div class="mini-effects"><span id="lifeBadge"></span><span id="magnetBadge"></span><span id="doubleBadge"></span></div>
+
+            <div class="corner-actions">
+                <button id="soundButton" class="icon-button" aria-label="Dźwięk">🔊</button>
+                <button id="pauseButton" class="icon-button" aria-label="Pauza">Ⅱ</button>
+            </div>
+
+            <section id="pauseScreen" class="game-screen hidden">
+                <div class="screen-panel compact"><span class="screen-kicker">PAUZA</span><h2>Gra wstrzymana</h2><p>Naciśnij P, Esc lub przycisk pauzy.</p></div>
+            </section>
+
+            <section id="startScreen" class="game-screen">
+                <div class="screen-panel">
+                    <span class="screen-kicker">FLAPPY GAME</span>
+                    <h1>Gotowy?</h1>
+                    <p>Kliknij, dotknij ekranu albo naciśnij spację.</p>
+                    <div class="reward-list">
+                        <span>🪙 Moneta <strong>+3</strong></span>
+                        <span>🎁 Skrzynki <strong>losowe nagrody</strong></span>
+                        <span>🔥 Idealne przeloty <strong>Fever</strong></span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gameOverScreen" class="game-screen hidden">
+                <div class="screen-panel">
+                    <span class="screen-kicker">KONIEC GRY</span>
+                    <h2>Spróbuj ponownie</h2>
+                    <p class="final-result">Twój wynik <strong id="finalScore">0</strong></p>
+                    <div class="results-grid"><span>Rekord<strong id="finalBest">0</strong></span><span>Najlepsze combo<strong id="finalCombo">0</strong></span></div>
+                    <button id="restartButton">Zagraj ponownie</button>
+                    <p class="shortcut">Spacja / kliknięcie / dotknięcie</p>
+                </div>
+            </section>
+
+            <div class="controls-hint">Kliknij • Dotknij • Spacja • ↑</div>
+        </div>
+    </main>
+    <script src="game.js"></script>
+</body>
+</html>
